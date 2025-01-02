@@ -1,0 +1,33 @@
+<!-- checklist.component.html -->
+<div class="bg-gray-800 py-4 px-6">
+  <div class="flex items-center">
+    <input
+      class="py-2 px-4 border border-gray-300 w-full"
+      placeholder="Add a new item"
+      [(ngModel)]="note"
+      (keyup.enter)="addChecklistItem(note)"
+    />
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 ml-4"
+      (click)="addChecklistItem(note)"
+    >
+      Add
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="list-none py-4">
+    <li
+      *ngFor="let item of checklist; let i = index"
+      class="py-2 flex items-center"
+    >
+      <input
+        type="checkbox"
+        [(ngModel)]="item.completed"
+        (change)="toggleCompletion(i)"
+      />
+      <span class="ml-2">{{ item.text }}</span>
+    </li>
+  </ul>
+</div>
